@@ -1,4 +1,4 @@
-function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+function controlFromInput(fromSlider, fromInput, toInput, controlSlider, category) {
     const [from, to] = getParsed(fromInput, toInput);
     fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
     if (from > to) {
@@ -7,10 +7,10 @@ function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
     } else {
         fromSlider.value = from;
     }
-    updateSelectedBudget(from, to);
+    updateSelectedBudget();
 }
 
-function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+function controlToInput(toSlider, fromInput, toInput, controlSlider, category) {
     const [from, to] = getParsed(fromInput, toInput);
     fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
     setToggleAccessible(toInput);
@@ -20,10 +20,10 @@ function controlToInput(toSlider, fromInput, toInput, controlSlider) {
     } else {
         toInput.value = from;
     }
-    updateSelectedBudget(from, to);
+    updateSelectedBudget();
 }
 
-function controlFromSlider(fromSlider, toSlider, fromInput) {
+function controlFromSlider(fromSlider, toSlider, fromInput, category) {
   const [from, to] = getParsed(fromSlider, toSlider);
   fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
   if (from > to) {
@@ -32,10 +32,10 @@ function controlFromSlider(fromSlider, toSlider, fromInput) {
   } else {
     fromInput.value = from;
   }
-  updateSelectedBudget(from, to);
+  updateSelectedBudget();
 }
 
-function controlToSlider(fromSlider, toSlider, toInput) {
+function controlToSlider(fromSlider, toSlider, toInput, category) {
   const [from, to] = getParsed(fromSlider, toSlider);
   fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
   setToggleAccessible(toSlider);
@@ -46,7 +46,7 @@ function controlToSlider(fromSlider, toSlider, toInput) {
     toInput.value = from;
     toSlider.value = from;
   }
-  updateSelectedBudget(from, to);
+  updateSelectedBudget();
 }
 
 function getParsed(currentFrom, currentTo) {
@@ -70,27 +70,41 @@ function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
 }
 
 function setToggleAccessible(currentTarget) {
-  const toSlider = document.querySelector('#toSlider');
-  if (Number(currentTarget.value) <= 39 ) {
+  const toSlider = document.querySelector(`#${currentTarget.id.replace('from', 'to')}`);
+  if (Number(currentTarget.value) <= 0 ) {
     toSlider.style.zIndex = 2;
   } else {
     toSlider.style.zIndex = 0;
   }
 }
 
-function updateSelectedBudget(from, to) {
+function updateSelectedBudget() {
+  const fromSliders = document.querySelectorAll('[id^=fromSlider]');
+  const toSliders = document.querySelectorAll('[id^=toSlider]');
+  
+  let minSum = 0;
+  let maxSum = 0;
+
+  fromSliders.forEach(slider => minSum += parseInt(slider.value, 10));
+  toSliders.forEach(slider => maxSum += parseInt(slider.value, 10));
+
   const selectedBudget = document.querySelector('#selected-budget');
-  selectedBudget.textContent = `$${from} - $${to}`;
+  selectedBudget.textContent = `$${minSum} - $${maxSum}`;
 }
 
-const fromSlider = document.querySelector('#fromSlider');
-const toSlider = document.querySelector('#toSlider');
-const fromInput = document.querySelector('#fromInput');
-const toInput = document.querySelector('#toInput');
-fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
-setToggleAccessible(toSlider);
+const categories = ['Tent', 'SleepingBag', 'Backpack', 'Hammock'];
 
-fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
-toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
-toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+categories.forEach(category => {
+  const fromSlider = document.querySelector(`#fromSlider${category}`);
+  const toSlider = document.querySelector(`#toSlider${category}`);
+  const fromInput = document.querySelector(`#fromInput${category}`);
+  const toInput = document.querySelector(`#toInput${category}`);
+
+  fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+  setToggleAccessible(toSlider);
+
+  fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput, category);
+  toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput, category);
+  fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider, category);
+  toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider, category);
+});
