@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friendly Budget</title>
+    <link rel="stylesheet" href="slider.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Set Your Budget</h1>
+        <div>
+            <p><strong>Minimum Budget: </strong><span id="min-budget">$127</span></p>
+            <p><strong>Maximum Budget: </strong><span id="max-budget">$854</span></p>
+            <p><strong>Selected Budget: </strong><span id="selected-budget">$127 - $854</span></p>
+        </div>
+        <div id="categories">
+            <!-- Example for one category, repeat similarly for others -->
+            <div class="category-wrapper">
+                <span class="category-label">Tent ($39 - $349)</span>
+                <div class="slider-container">
+                    <div class="slider-track"></div>
+                    <div class="slider-range" id="tent-range"></div>
+                    <input type="range" min="39" max="349" value="39" class="range-min" id="tent-min">
+                    <input type="range" min="39" max="349" value="349" class="range-max" id="tent-max">
+                </div>
+                <button class="remove-category">Remove</button>
+                <div class="drag-handle" draggable="true">::</div>
+            </div>
+            <div class="category-wrapper">
+                <span class="category-label">Sleeping Bag ($34 - $230)</span>
+                <div class="slider-container">
+                    <div class="slider-track"></div>
+                    <div class="slider-range" id="sleeping-bag-range"></div>
+                    <input type="range" min="34" max="230" value="34" class="range-min" id="sleeping-bag-min">
+                    <input type="range" min="34" max="230" value="230" class="range-max" id="sleeping-bag-max">
+                </div>
+                <button class="remove-category">Remove</button>
+                <div class="drag-handle" draggable="true">::</div>
+            </div>
+            <div class="category-wrapper">
+                <span class="category-label">Backpack ($39 - $200)</span>
+                <div class="slider-container">
+                    <div class="slider-track"></div>
+                    <div class="slider-range" id="backpack-range"></div>
+                    <input type="range" min="39" max="200" value="39" class="range-min" id="backpack-min">
+                    <input type="range" min="39" max="200" value="200" class="range-max" id="backpack-max">
+                </div>
+                <button class="remove-category">Remove</button>
+                <div class="drag-handle" draggable="true">::</div>
+            </div>
+            <div class="category-wrapper">
+                <span class="category-label">Hammock ($15 - $75)</span>
+                <div class="slider-container">
+                    <div class="slider-track"></div>
+                    <div class="slider-range" id="hammock-range"></div>
+                    <input type="range" min="15" max="75" value="15" class="range-min" id="hammock-min">
+                    <input type="range" min="15" max="75" value="75" class="range-max" id="hammock-max">
+                </div>
+                <button class="remove-category">Remove</button>
+                <div class="drag-handle" draggable="true">::</div>
+            </div>
+        </div>
+    </div>
+    <script src="budget_friendly.js"></script>
+</body>
+</html>
