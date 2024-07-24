@@ -6,85 +6,87 @@
     <link rel="stylesheet" href="/dualplusslider/duoslide.css">
 </head>
 <body>
-    <h1>Set Your Budget</h1>
-    <div>
-        <p><strong>Minimum Budget: </strong><span id="min-budget">$127</span></p>
-        <p><strong>Maximum Budget: </strong><span id="max-budget">$854</span></p>
-        <p><strong>Selected Budget: </strong><span id="selected-budget">$127 - $854</span></p>
-    </div>
+    <header class="fixed-header">
+        <h1>Set Your Budget</h1>
+        <div>
+            <p><strong>Minimum Budget: </strong><span id="min-budget">$127</span></p>
+            <p><strong>Maximum Budget: </strong><span id="max-budget">$854</span></p>
+            <p><strong>Selected Budget: </strong><span id="selected-budget">$127 - $854</span></p>
+        </div>
+    </header>
+    <main class="content">
+        <div class="range_container" id="tent-category">
+            <div><h2>Tent ($39 - $349) </h2></div>
+            <div class="sliders_control">
+                <input id="fromSliderTent" type="range" value="39" min="0" max="349"/>
+                <input id="toSliderTent" type="range" value="349" min="0" max="349"/>
+            </div>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromInputTent" value="39" min="0" max="349"/>
+                </div>
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toInputTent" value="349" min="0" max="349"/>
+                </div>
+            </div>
+        </div>
 
-    <div class="range_container" id="tent-category">
-        <div><h2>Tent ($39 - $349) </h2></div>
-        <div class="sliders_control">
-            <input id="fromSliderTent" type="range" value="39" min="0" max="349"/>
-            <input id="toSliderTent" type="range" value="349" min="0" max="349"/>
-        </div>
-        <div class="form_control">
-            <div class="form_control_container">
-                <div class="form_control_container__time">Min</div>
-                <input class="form_control_container__time__input" type="number" id="fromInputTent" value="39" min="0" max="349"/>
+        <div class="range_container" id="sleepingbag-category">
+            <div><h2>Sleeping Bag ($34 - $230) </h2></div>
+            <div class="sliders_control">
+                <input id="fromSliderSleepingBag" type="range" value="34" min="0" max="230"/>
+                <input id="toSliderSleepingBag" type="range" value="230" min="0" max="230"/>
             </div>
-            <div class="form_control_container">
-                <div class="form_control_container__time">Max</div>
-                <input class="form_control_container__time__input" type="number" id="toInputTent" value="349" min="0" max="349"/>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromInputSleepingBag" value="34" min="0" max="230"/>
+                </div>
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toInputSleepingBag" value="230" min="0" max="230"/>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="range_container" id="sleepingbag-category">
-        <div><h2>Sleeping Bag ($34 - $230) </h2></div>
-        <div class="sliders_control">
-            <input id="fromSliderSleepingBag" type="range" value="34" min="0" max="230"/>
-            <input id="toSliderSleepingBag" type="range" value="230" min="0" max="230"/>
-        </div>
-        <div class="form_control">
-            <div class="form_control_container">
-                <div class="form_control_container__time">Min</div>
-                <input class="form_control_container__time__input" type="number" id="fromInputSleepingBag" value="34" min="0" max="230"/>
+        <div class="range_container" id="backpack-category">
+            <div><h2>Backpack ($39 - $200) </h2></div>
+            <div class="sliders_control">
+                <input id="fromSliderBackpack" type="range" value="39" min="0" max="200"/>
+                <input id="toSliderBackpack" type="range" value="200" min="0" max="200"/>
             </div>
-            <div class="form_control_container">
-                <div class="form_control_container__time">Max</div>
-                <input class="form_control_container__time__input" type="number" id="toInputSleepingBag" value="230" min="0" max="230"/>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromInputBackpack" value="39" min="0" max="200"/>
+                </div>
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toInputBackpack" value="200" min="0" max="200"/>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="range_container" id="backpack-category">
-        <div><h2>Backpack ($39 - $200) </h2></div>
-        <div class="sliders_control">
-            <input id="fromSliderBackpack" type="range" value="39" min="0" max="200"/>
-            <input id="toSliderBackpack" type="range" value="200" min="0" max="200"/>
-        </div>
-        <div class="form_control">
-            <div class="form_control_container">
-                <div class="form_control_container__time">Min</div>
-                <input class="form_control_container__time__input" type="number" id="fromInputBackpack" value="39" min="0" max="200"/>
+        <div class="range_container" id="hammock-category">
+            <div><h2>Hammock ($15 - $75) </h2></div>
+            <div class="sliders_control">
+                <input id="fromSliderHammock" type="range" value="15" min="0" max="75"/>
+                <input id="toSliderHammock" type="range" value="75" min="0" max="75"/>
             </div>
-            <div class="form_control_container">
-                <div class="form_control_container__time">Max</div>
-                <input class="form_control_container__time__input" type="number" id="toInputBackpack" value="200" min="0" max="200"/>
-            </div>
-        </div>
-    </div>
-
-    <div class="range_container" id="hammock-category">
-        <div><h2>Hammock ($15 - $75) </h2></div>
-        <div class="sliders_control">
-            <input id="fromSliderHammock" type="range" value="15" min="0" max="75"/>
-            <input id="toSliderHammock" type="range" value="75" min="0" max="75"/>
-        </div>
-        <div class="form_control">
-            <div class="form_control_container">
-                <div class="form_control_container__time">Min</div>
-                <input class="form_control_container__time__input" type="number" id="fromInputHammock" value="15" min="0" max="75"/>
-            </div>
-            <div class="form_control_container">
-                <div class="form_control_container__time">Max</div>
-                <input class="form_control_container__time__input" type="number" id="toInputHammock" value="75" min="0" max="75"/>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromInputHammock" value="15" min="0" max="75"/>
+                </div>
+                <div class="form_control_container">
+                    <div class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toInputHammock" value="75" min="0" max="75"/>
+                </div>
             </div>
         </div>
-    </div>
-
+    </main>
     <script src="/dualplusslider/duoslide.js"></script>
 </body>
 </html>
