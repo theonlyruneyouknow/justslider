@@ -218,3 +218,24 @@ input[type=range] {
     position: absolute;
     z-index: 3;
 }
+
+/* Add these styles for dragging */
+.range_container {
+    transition: background-color 0.2s ease;
+}
+
+.dragging .drag-button {
+    background-color: #28a745;
+}
+
+.range_container.dragging {
+    opacity: 0.5;
+}
+
+.range_container.over {
+    border: 2px dashed #007bff;
+}
+
+.dragging-over {
+    background-color: #e0ffe0; /* Light green to indicate valid drop target */
+}
