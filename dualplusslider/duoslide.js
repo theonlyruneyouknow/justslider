@@ -7,8 +7,9 @@ function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
     } else {
         fromSlider.value = from;
     }
+    updateSelectedBudget(from, to);
 }
-    
+
 function controlToInput(toSlider, fromInput, toInput, controlSlider) {
     const [from, to] = getParsed(fromInput, toInput);
     fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
@@ -19,6 +20,7 @@ function controlToInput(toSlider, fromInput, toInput, controlSlider) {
     } else {
         toInput.value = from;
     }
+    updateSelectedBudget(from, to);
 }
 
 function controlFromSlider(fromSlider, toSlider, fromInput) {
@@ -30,6 +32,7 @@ function controlFromSlider(fromSlider, toSlider, fromInput) {
   } else {
     fromInput.value = from;
   }
+  updateSelectedBudget(from, to);
 }
 
 function controlToSlider(fromSlider, toSlider, toInput) {
@@ -43,6 +46,7 @@ function controlToSlider(fromSlider, toSlider, toInput) {
     toInput.value = from;
     toSlider.value = from;
   }
+  updateSelectedBudget(from, to);
 }
 
 function getParsed(currentFrom, currentTo) {
@@ -72,6 +76,11 @@ function setToggleAccessible(currentTarget) {
   } else {
     toSlider.style.zIndex = 0;
   }
+}
+
+function updateSelectedBudget(from, to) {
+  const selectedBudget = document.querySelector('#selected-budget');
+  selectedBudget.textContent = `$${from} - $${to}`;
 }
 
 const fromSlider = document.querySelector('#fromSlider');
